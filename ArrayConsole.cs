@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SparkySimpArrayUtils
+namespace SparkySimp.ArrayUtils
 {
     /// <summary>
     /// Provides console extensions that can read/write collections.
