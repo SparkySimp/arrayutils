@@ -33,8 +33,6 @@ namespace SparkySimp.ArrayUtils
             if (count <= 0)
                 throw new InvalidOperationException(message: "Amount of numbers to generate must be positive.");
             // I'm smelling some mistakes here.
-            if (Math.Abs(max - min) < count)
-                throw new InvalidOperationException(message: $"It is not possible to produce {count} unique numbers between {min} and {max}");
             int[] numbers = new int[count];
             int generatedNumber;
             for (int i = 0; i < numbers.Length; i++) // Special thanks to Emrah Porgalı...

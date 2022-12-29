@@ -82,6 +82,25 @@ namespace SparkySimpArrayUtils
 
             return bytes;
         }
+        /// <summary>
+        /// Crops a given fragment of an array.
+        /// </summary>
+        /// <typeparam name="T">Type of the elements in the array.</typeparam>
+        /// <param name="array">The array (<see cref="this"/>) to crop.</param>
+        /// <param name="start">Start index of the array. </param>
+        /// <param name="end">End index of the array. </param>
+        /// <param name="skipBy">Amount to skip by.</param>
+        /// <returns>The cropped array.</returns>
+        public static T[] Crop<T>(this T[] array, int start, int end, uint skipBy = 1)
+        {
+            T[] cropped = new T[(end - start) / skipBy];
+            for (int i = start, cropIndex = 0; i < end; i++, cropIndex++)
+            {
+                if (i % skipBy != 0) continue;
+                cropped[cropIndex] = array[i];
+            }
+            return cropped;
+        }
         #endregion
         #region Writers
         /// <summary>
