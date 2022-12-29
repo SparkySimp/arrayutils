@@ -82,33 +82,6 @@ namespace SparkySimpArrayUtils
 
             return bytes;
         }
-
-        /// <summary>
-        /// Generates a set of unique random numbers.
-        /// </summary>
-        /// <param name="count">The amount of numbers to produce</param>
-        /// <param name="max">Maximum possible number.</param>
-        /// <param name="min">Minimum possible number.</param>
-        /// <returns>The set of generated numbers.</returns>
-        /// <exception cref="InvalidOperationException">Thrown when number count is not positive, or when the minimum value is lower than the number count. </exception>
-        public static int[] GenerateUniqueRandomNumbers(int count, int max = Int32.MaxValue, int min = Int32.MinValue, int? prngSeed = null)
-        {
-            Random prng = new Random(prngSeed ?? DateTime.UtcNow.Ticks.GetHashCode());
-            if (count <= 0) 
-               throw new InvalidOperationException(message: "Amount of numbers to generate must be positive.");
-            // I'm smelling some mistakes here.
-            if (Math.Abs(max - min) < count)
-               throw new InvalidOperationException(message: $"It is not possible to produce {count} unique numbers between {min} and {max}");
-            int[] numbers = new int[count];
-            int generatedNumber;
-            for (int i = 0; i < numbers.Length; i++) // Special thanks to Emrah Porgalı...
-            {
-                if (Array.IndexOf(numbers, generatedNumber = prng.Next(min, max)) == -1)
-                    numbers[i] = generatedNumber;
-                else i--; // repeat this iteration.
-            }
-            return numbers;
-        }
         #endregion
         #region Writers
         /// <summary>
@@ -163,7 +136,7 @@ namespace SparkySimpArrayUtils
             Out.WriteLine("}");
         }
         #endregion
-        #region Reader implementations
+        #region Readers
         /// <summary>
         /// Reads an array of <see cref="int"/>s from standard input.
         /// </summary>
